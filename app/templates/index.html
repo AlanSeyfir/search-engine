@@ -1,0 +1,26 @@
+{% extends './layout.html' %}
+
+{% block title %} {{data.titulo}} {% endblock %}
+
+{% block body %}
+
+   <main>
+
+    <div class="container mt-5">
+        <h1 class="title">{{data.titulo}}</h1>
+        <form method="post">
+            <div class="input-group">
+                <label>Ingresa tu búsqueda:</label>
+                <input type="text" name="keywords">
+                <button type="submit">
+                    Buscar
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+  </div>
+  </main>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends './layout.html' %}
+
+{% block title %} {{data.titulo}} {% endblock %}
+
+{% block body %}
+
+   <h1>{{data.titulo}}</h1>
+    <p>Param 1: {{data.param1}}</p>
+    <p>Param 2: {{data.param2}}</p>
+    {% for k in data.keywords %}
+    <div class="keyword">
+        {{k}}
+    </div>
+    {% endfor %}
+{% endblock %}

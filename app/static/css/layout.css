@@ -1,0 +1,59 @@
+body {
+    background-color: #e6e6e6;
+    font-family:roboto;
+}
+
+.keyword{
+    background-color:#ccc;
+    color:#fff;
+    width:fit-content;
+    padding:1rem;
+    margin-top:1rem;
+    border-radius:0.25rem;
+}
+
+.container {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:row;
+    gap:0.5rem;
+    justify-content:center;
+    align-items:center;
+}
+
+
+
+.mt-5{
+    margin-top:12.5rem;
+}
+
+.mt-4{
+    margin-top:6.25rem;
+}
+
+.title{
+    font-size:3em;
+}
+
+form{
+    background:#ccc;
+    padding:1.5rem;
+    border-radius:0.5rem;
+}
+
+.result {
+    padding: 1rem;
+    background:0.5rem;
+    background:#ccc;
+    margin-bottom:1rem;
+}
+
+.result::last-child {
+    margin-bottom:0;
+}
