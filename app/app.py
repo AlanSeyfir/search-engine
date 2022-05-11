@@ -69,7 +69,7 @@ def result(kw):
 
     # keyword = keyword.lower()
 
-    filepaths = glob.glob('Files/Files/*')  # Abre el directorio de los archivos donde se buscara la palabra.
+    filepaths = glob.glob('/Files/Files/*')  # Abre el directorio de los archivos donde se buscara la palabra.
 
     for keyword in keywords:
         keyword = keyword.lower()
