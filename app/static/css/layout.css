@@ -52,6 +52,11 @@ form{
     background:0.5rem;
     background:#ccc;
     margin-bottom:1rem;
+    border-radius:0.5rem;
+}
+
+.result p {
+    margin:0;
 }
 
 .result::last-child {

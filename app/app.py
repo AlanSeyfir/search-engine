@@ -22,7 +22,7 @@ def index():
         return render_template("index.html", data=data)
 
 
-@app.route("/<kw>")
+@app.route("/kw/<kw>")
 def result(kw):
 
     #Código de la actividad
@@ -33,6 +33,9 @@ def result(kw):
         D1 = {}  # Contiene los valores numericos
         D2 = {}  # Contiene los paths
         result = []
+        documents = []
+        numbers = []
+        names = []
 
         index = 0
         for i in hits:
@@ -52,11 +55,22 @@ def result(kw):
         for i in range(len(D1)):
             print(D1[i], "   ", D2[i])
             result.append(str(D1[i]) + " " + str(D2[i]))
+            #documents.append(D2[i])
+            documents.append(D2[i].replace("\\", "/").partition("/")[2])
+            #documents.append(D2[i].partition("/")[2])
+            numbers.append(D1[i])
+            name = D2[i]
+            names.append(name.partition(".")[0].partition("\\")[2])
+
             index += 1
             if index >= 10:
                 break
 
-        return result
+        return {
+            "names":names,
+            "documents":documents,
+            "numbers":numbers
+        }
 
     hits = []  # Array donde se escriben los archivos donde se encuentran las palabras.
     keywords = []
@@ -69,12 +83,7 @@ def result(kw):
 
     # keyword = keyword.lower()
 
-    filepaths = glob.glob('Files/Files/*')  # Abre el directorio de los archivos donde se buscara la palabra.
-
-    if filepaths:
-        print(filepaths)
-    else:
-        print("No pude abrir filepaths")
+    filepaths = glob.glob('templates/*')  # Abre el directorio de los archivos donde se buscara la palabra.
 
     for keyword in keywords:
         keyword = keyword.lower()
@@ -113,16 +122,25 @@ def result(kw):
     print("Top 10 Documents")
     result = bSort(frequency, hits)
 
+    print(result)
+    print(len(result["documents"]))
+    print(result["documents"][0])
+
     #Lo que voy a regresar:
     data ={
-        "kw":result,
+        "result":result,
+        "length":len(result["documents"]),
         "titulo": "Resultado"
     }
     return render_template("result.html", data=data)
 
+@app.route("/document/<name>")
+def load_page(name):
+    return render_template(name)
 
 def pagina_no_encontrada(error):
     #return render_template("404.html"), 404
+    print("No encontré la página")
     return redirect(url_for('index'))
 
 if __name__ == "__main__":
